@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Value
 public class Event 
 {
-    Long id;
+    Long event_id;
     String name_of_event;
     LocalDate date_of_event;
     LocalTime start_of_event;

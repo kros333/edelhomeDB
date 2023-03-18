@@ -22,10 +22,10 @@ public class DefaultAppUserService implements AppUserService{
 
 
     @Override
-    public AppUser getAppUserById(Long id) {
+    public AppUser getAppUserByUserid(Long userid) {
         AppUserEntity appuserEntity = appuserRepository
-                .findById(id)
-                .orElseThrow(() -> new NotFoundException("AppUser not found: id = " + id));
+                .findById(userid)
+                .orElseThrow(() -> new NotFoundException("AppUser not found: userid = " + userid));
 
         return mapper.appUserEntityToAppUser(appuserEntity);
     }
@@ -52,8 +52,8 @@ public class DefaultAppUserService implements AppUserService{
     }
 
     @Override
-    public List<AppUser> findAllByIs_admin(Boolean is_admin) {
-        Iterable<AppUserEntity> iterable = appuserRepository.findAllByIs_admin(is_admin);
+    public List<AppUser> findAllByIsadmin(Boolean isadmin) {
+        Iterable<AppUserEntity> iterable = appuserRepository.findAllByIsadmin(isadmin);
 
         ArrayList<AppUser> appusers = new ArrayList<>();
         for (AppUserEntity appuserEntity : iterable) {
@@ -71,8 +71,8 @@ public class DefaultAppUserService implements AppUserService{
 
     @Override
     public void editAppUser(AppUser appuser) {
-        if (!appuserRepository.existsById(appuser.getId()))
-            throw new NotFoundException("AppUser not found: id = " + appuser.getId());
+        if (!appuserRepository.existsById(appuser.getUserid()))
+            throw new NotFoundException("AppUser not found: id = " + appuser.getUserid());
 
         AppUserEntity appuserEntity = mapper.appUserToAppUserEntity(appuser);
         appuserRepository.save(appuserEntity);

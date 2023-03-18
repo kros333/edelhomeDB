@@ -5,8 +5,8 @@ import lombok.*;
 @Value
 public class AppUser 
 {
-    Long id;
+    Long userid;
     String login;
     String pass;
-    boolean is_admin;
+    boolean isadmin;
 }

@@ -7,5 +7,5 @@ import com.edelhome.edelhomeDB.model.AppUserRequest;
 @Mapper(componentModel = "spring")
 public interface AppUserToDtoMapper {
     AppUser AddAppUserRequestToAppUser(AppUserRequest appuserRequest);
-    AppUser EditAppUserRequestToAppUser(Long id, AppUserRequest appuserRequest);
+    AppUser EditAppUserRequestToAppUser(Long userid, AppUserRequest appuserRequest);
 }

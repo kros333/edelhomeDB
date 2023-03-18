@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-02-26T19:10:58+0300",
+    date = "2023-03-12T13:55:27+0300",
     comments = "version: 1.4.2.Final, compiler: Eclipse JDT (IDE) 3.33.0.v20230213-1046, environment: Java 17.0.6 (Eclipse Adoptium)"
 )
 @Component
@@ -21,10 +21,10 @@ public class AppUserToEntityMapperImpl implements AppUserToEntityMapper {
 
         AppUserEntity appUserEntity = new AppUserEntity();
 
-        appUserEntity.setId( appUser.getId() );
+        appUserEntity.setIsadmin( appUser.isIsadmin() );
         appUserEntity.setLogin( appUser.getLogin() );
         appUserEntity.setPass( appUser.getPass() );
-        appUserEntity.set_admin( appUser.is_admin() );
+        appUserEntity.setUserid( appUser.getUserid() );
 
         return appUserEntity;
     }
@@ -35,17 +35,17 @@ public class AppUserToEntityMapperImpl implements AppUserToEntityMapper {
             return null;
         }
 
-        Long id = null;
+        Long userid = null;
         String login = null;
         String pass = null;
+        boolean isadmin = false;
 
-        id = appUserEntity.getId();
+        userid = appUserEntity.getUserid();
         login = appUserEntity.getLogin();
         pass = appUserEntity.getPass();
+        isadmin = appUserEntity.isIsadmin();
 
-        boolean is_admin = false;
-
-        AppUser appUser = new AppUser( id, login, pass, is_admin );
+        AppUser appUser = new AppUser( userid, login, pass, isadmin );
 
         return appUser;
     }

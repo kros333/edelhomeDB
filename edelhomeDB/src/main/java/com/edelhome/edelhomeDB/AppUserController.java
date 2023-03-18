@@ -18,9 +18,9 @@ public class AppUserController {
     private final AppUserService appuserService;
     private final AppUserToDtoMapper mapper;
 
-    @GetMapping("/id/{id}")
-    public AppUser getAppUserById(@PathVariable ("id") Long id) {
-        return appuserService.getAppUserById(id);
+    @GetMapping("/userid/{userid}")
+    public AppUser getAppUserById(@PathVariable ("userid") Long userid) {
+        return appuserService.getAppUserByUserid(userid);
     }
 
     @GetMapping("/{login}")
@@ -30,20 +30,20 @@ public class AppUserController {
     }
 
     @GetMapping
-    public List<AppUser> getAllAppUsers(@RequestParam(required = false) Boolean is_admin) {
-        if (is_admin != null)
-            return appuserService.findAllByIs_admin(is_admin);
+    public List<AppUser> getAllAppUsers(@RequestParam(required = false) Boolean isadmin) {
+        if (isadmin != null)
+            return appuserService.findAllByIsadmin(isadmin);
 
         return appuserService.getAllAppUsers();
     }
 
-    @PostMapping
+    @PostMapping 
     public void addAppUser(@RequestBody AppUserRequest request) {
         appuserService.addAppUser(mapper.AddAppUserRequestToAppUser(request));
     }
 
-    @PutMapping("/{id}")
-    public void editAppUser(@PathVariable Long id, @RequestBody AppUserRequest request) {
-        appuserService.editAppUser(mapper.EditAppUserRequestToAppUser(id, request));
+    @PutMapping("/{userid}")
+    public void editAppUser(@PathVariable Long userid, @RequestBody AppUserRequest request) {
+        appuserService.editAppUser(mapper.EditAppUserRequestToAppUser(userid, request));
     }
 }

@@ -12,11 +12,11 @@ import lombok.*;
 public class AppUserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private Long userid;
+    @Column(unique=true)
     private String login;
 
     private String pass;
 
-    private boolean is_admin;
+    private boolean isadmin;
 }

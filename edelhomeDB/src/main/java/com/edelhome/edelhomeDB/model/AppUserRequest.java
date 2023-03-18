@@ -6,5 +6,5 @@ import lombok.Data;
 public class AppUserRequest {
     String login;
     String pass;
-    boolean is_admin;
+    boolean isadmin;
 }
